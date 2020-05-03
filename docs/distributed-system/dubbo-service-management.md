@@ -17,7 +17,7 @@
 
 那就需要基于 dubbo 做的分布式系统中，对各个服务之间的调用自动记录下来，然后自动将**各个服务之间的依赖关系和调用链路生成出来**，做成一张图，显示出来，大家才可以看到对吧。
 
-![dubbo-service-invoke-road](/images/dubbo-service-invoke-road.png)
+![dubbo-service-invoke-road](./images/dubbo-service-invoke-road.png)
 
 #### 2. 服务访问压力以及时长统计
 需要自动统计**各个接口和服务之间的调用次数以及访问延时**，而且要分成两个级别。
@@ -48,7 +48,6 @@ public class HelloServiceImpl implements HelloService {
         System.out.println("hello world......");
     }
 }
-
 ```
 
 ```xml
@@ -85,13 +84,13 @@ public class HelloServiceImpl implements HelloService {
 我们调用接口失败的时候，可以通过 `mock` 统一返回 null。
 
 mock 的值也可以修改为 true，然后再跟接口同一个路径下实现一个 Mock 类，命名规则是 “接口名称+`Mock`” 后缀。然后在 Mock 类里实现自己的降级逻辑。
+
 ```java
 public class HelloServiceMock implements HelloService {
     public void sayHello() {
         // 降级逻辑
     }
 }
-
 ```
 
 ### 失败重试和超时重试
